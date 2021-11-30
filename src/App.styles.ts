@@ -30,7 +30,7 @@ export const Wrapper = styled.div `
     }
 
     .score {
-        color: white;
+        color: black;
         font-size: 32px;
         margin: 0;
     }
@@ -41,7 +41,7 @@ export const Wrapper = styled.div `
         --moz-background-clip: text;
         --webkit-text-fill-color: color;
         filter: drop-shadow(2px 2px #008583);
-        font-size: 70px;
+        font-size: 50px;
         text-align:center;
         margin: 20px;
         font-weight: 400;
