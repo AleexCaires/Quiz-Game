@@ -14,7 +14,7 @@ export type AnswerObject= {
   correctAnswer: string;
 }
 
-const TOTAL_QUESTIONS = 10;
+const TOTAL_QUESTIONS = 15;
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -81,7 +81,7 @@ const App = () => {
     <Wrapper>
       <h1>React Quiz</h1>
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-          <button className='start' onClick={startTrivia}>
+          <button className='start draw-border' onClick={startTrivia}>
       Start
           </button>
         ) : null}
