@@ -5,7 +5,7 @@ import QuestionCard from './components/QuestionCard';
 //types
 import { Difficulty, QuestionState } from './API';
 
-type AnswerObject= {
+export type AnswerObject= {
   question: string,
   answer: string,
   correct: boolean;
@@ -43,10 +43,33 @@ const App = () => {
   }
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
-
-  }
+    if(!gameOver){
+      //users answer
+      const answer = e.currentTarget.value;
+      //Check answer against correct value
+      const correct = questions[number].correct_answer === answer;
+      //Add score if answer is correct
+      if( correct ) setScore((prev) => prev + 1);
+      //Save answer in the array for user answers
+      const answerObject = {
+      question: questions[number].question,
+      answer,
+      correct,
+      correctAnswer: questions[number].correct_answer,
+      };
+      setUserAnswers((prev) => [...prev, answerObject]);
+    }
+  };
 
   const nextQuestion = () => {
+    //move to the next question if we not in the last question
+    const nextQuestion = number + 1;
+
+    if(nextQuestion === TOTAL_QUESTIONS){
+      setGameOver(true)
+    } else {
+      setNumber(nextQuestion);
+    }
 
 
   }
@@ -59,7 +82,7 @@ const App = () => {
     ) : null}
 
     {/* Only show score if we not already in a game */}
-    {!gameOver ? <p className='score'>Score:</p> : null }
+    {!gameOver ? <p className='score'>Score: {score}</p> : null }
     {/* Loading Questions only will be showed when we load something */}
     {loading ? <p>Loading Questions ...</p> : null}
     {/* Question Card will only be loaded if we not loading and if we not in GameOver */}
