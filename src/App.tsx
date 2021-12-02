@@ -79,7 +79,7 @@ const App = () => {
     <>
     <Global />
     <Wrapper>
-      <h1>Jogo da Perguntinha</h1>
+      <h1>Quiz Game</h1>
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
           <button className='start draw-border' onClick={startTrivia}>
       Start
